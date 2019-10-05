@@ -38,7 +38,7 @@ body {
 	Albums 
 			*/
 .albums-album-wrapper {
-	margin: 20px 7px 0 7px;
+	margin: 7% 2.3% 0 2.3%;
 	float: left;
 }
 
@@ -65,8 +65,8 @@ body {
 	Songs 
 			*/
 .songs-info-wrapper {
+	height: 26%;
 	padding: 2%;
-	float: left;
 }
 
 .songs-album-art {
@@ -88,7 +88,7 @@ body {
 
 .songs-text-info {
 	float: right;
-	padding-top: 10px;
+	padding-top: 3%;
 	width: 50%;
 }
 
@@ -99,7 +99,10 @@ body {
 }
 
 .songs-list {
-	
+	font-size: 1.1em;
+	border: black solid thin;
+	padding-left: 1%;
+	margin: 2% 4% 2% 0;
 }
 
 /* 
