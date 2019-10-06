@@ -1,2 +1,4 @@
 # NU-Projects
-Projects completed by PhoeniXuzoo during NU
+
+* **CS330 HCI**
+1. Music Player UI
