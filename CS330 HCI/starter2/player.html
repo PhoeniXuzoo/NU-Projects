@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Music Player</title>
+    <link rel="stylesheet" type="text/css" href="ipod.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div id="screen">
+        <div class="head-bar">
+            <div class="back-button">
+                <a href="./songs.html"><i class="material-icons">arrow_back</i></a>
+            </div>
+        </div>
+    <img class = "player-album-art" src="images/ori_and_blind_Forest.jpg" alt="Ori Cover"/>
+    <div class="player-song-info">
+        <p id="player-song-name">Finding Sein</p>
+        <p><em>Ori OST</em> - Gareth Coker</p>
+    </div>
+    <input type="range" id="time-elapsed" value="0" min="0" max="180">
+    <div id="player-time">0:00</div>
+    <div id="time-total">3:00</div>
+
+    <div class="player-controls">
+        <button onclick="prevSong()"><i class="material-icons">skip_previous</i></button>
+        <button onclick="switchPlay()"><i class="material-icons">play_arrow</i></button>
+        <button onclick="nextSong()"><i class="material-icons">skip_next</i></button>
+    </div>
+    <div class="volume-bar">
+        <i class="material-icons">volume_down</i>
+        <div class="volume-level" id="vl0"></div>
+        <div class="volume-level" id="vl1"></div>
+        <div class="volume-level" id="vl2"></div>
+        <div class="volume-level" id="vl3"></div>
+        <div class="volume-level" id="vl4"></div>
+        <div class="volume-level" id="vl5"></div>
+    </div>
+    <button class="volume-rocker" onclick="volDown()">-</button>
+    <button class="volume-rocker" onclick="volUp()">+</button>
+   
+    </div>
+<script src="ipod.js"></script>
+</body>
+</html>
+<!-- 
+* bg iphone img is 363x762px
+* iphone 'screen' is apprx 300x530 -->
