@@ -8,7 +8,7 @@
     <div id="screen">
         <div class="head-bar">
             <div class="back-button">
-                <a href="./songs.html"><i class="material-icons">arrow_back</i></a>
+                <a href="songs.html"><i class="material-icons">arrow_back</i></a>
             </div>
         </div>
     <img class = "player-album-art" src="images/ori_and_blind_Forest.jpg" alt="Ori Cover"/>
@@ -16,13 +16,13 @@
         <p id="player-song-name">Finding Sein</p>
         <p><em>Ori OST</em> - Gareth Coker</p>
     </div>
-    <input type="range" id="time-elapsed" value="0" min="0" max="180">
+    <input type="range" id="time-elapsed" value="0" min="0" max="180" onchange="modifyTime()">
     <div id="player-time">0:00</div>
     <div id="time-total">3:00</div>
 
     <div class="player-controls">
         <button onclick="prevSong()"><i class="material-icons">skip_previous</i></button>
-        <button onclick="switchPlay()"><i class="material-icons">play_arrow</i></button>
+        <button onclick="switchPlay()"><i class="material-icons" id="switch">play_arrow</i></button>
         <button onclick="nextSong()"><i class="material-icons">skip_next</i></button>
     </div>
     <div class="volume-bar">

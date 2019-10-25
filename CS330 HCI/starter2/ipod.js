@@ -2,11 +2,12 @@
 var tracklist = ["ori, Lost in the Storm", "Naru, Embracing the Light", "Calling Out", "The Blinded Forest", "Inspiriting", "First Step", "Finding Sein", "Up the Spirit Caverns Walls", "The Spirit Tree", "Kuro's Tale I - Her Rage"];
 var volLevels = [];
 var currentVol;
-var ithSong = 6;
+var ithSong = 6;            /*now, it is ith song on player*/
 var currentPlayTime;
-var isPlay = false;
-var interval;
-var playBackFn = () => {
+var isPlay = false;         /*is it playing?*/
+var interval;               /*handler of setInterval, use it to stop and reactive*/
+
+function playBackFn() {     /*callback function which helps to control playback or pause*/
     if (currentPlayTime >= 0 && currentPlayTime <= 180) {
         currentPlayTime = document.getElementById("time-elapsed").value;
         document.getElementById("player-time").innerText = secondsToMs(++currentPlayTime);
@@ -40,15 +41,22 @@ function volDown() {
         volLevels[currentVol--].style.backgroundColor = "#FFFFFF";
 }
 
+/*click time-bar to modify time*/
+function modifyTime() {
+    currentPlayTime = document.getElementById("time-elapsed").value;
+    document.getElementById("player-time").innerText = secondsToMs(currentPlayTime);
+}
+
 function switchPlay() {
 	// Your code goes here
     if (!isPlay) {
         isPlay = true;
-        //document.getElementById()
+        document.getElementById("switch").innerHTML = "pause";
         interval = setInterval(playBackFn, 1000);
     }
     else {
         isPlay = false;
+        document.getElementById("switch").innerHTML = "play_arrow";
         clearInterval(interval);
     }
 }
