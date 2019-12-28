@@ -7,7 +7,7 @@ Personal solutions for some courses of Northwestern University. All the source c
    - [Music Player UI : album page and songs page](/CS330-HCI/ipod-starter)   
    - [Music Player UI : player page](/CS330-HCI/starter2/)  
  - CE495 Introduction to Database Systems and Data Warehousing  
-   - [Simulation: Northwestern Caesar's academic system](/CE495-Introduction-to-Database-Systems-and-Data-Warehousing/db_application)  
+   - [Simulation: Northwestern Caesar's academic system](/CE495-Introduction-to Database-Systems-and-Data-Warehousing/db_application)  
 
 # 2020 Winter
 
