@@ -18,11 +18,11 @@ The requirements of the assignment contain two parts.
 
 ## Solution
 
-The solution of the first requirement is [albums.html](/albums.html).  
+The solution of the first requirement contains [albums.html](/CS330-HCI/ipod-starter/albums.html) and [ipod.css](/CS330-HCI/ipod-starter/ipod.css).  
 
 ![albums.html](albums.png)
 
-The solution of the second requirement is [songs.html](/songs.html).
+The solution of the second requirement contains [songs.html](/CS330-HCI/ipod-starter/songs.html) and [ipod.css](/CS330-HCI/ipod-starter/ipod.css).
 
 ![songs.html](songs.png)
 
