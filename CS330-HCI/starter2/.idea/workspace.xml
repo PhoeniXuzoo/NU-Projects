@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ea179f6-4ab0-44a8-80b7-f8355b82efae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/cbook.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/crybaby.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/currents.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/telefone.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1SIuyYdjNPcmpL7mvVsaqIhafmk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ea179f6-4ab0-44a8-80b7-f8355b82efae" name="Default Changelist" comment="" />
+      <created>1571263685181</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571263685181</updated>
+      <workItem from="1571263686270" duration="14718000" />
+      <workItem from="1571283207167" duration="2698000" />
+      <workItem from="1571334731666" duration="139000" />
+      <workItem from="1571337870941" duration="716000" />
+      <workItem from="1571420893274" duration="340000" />
+      <workItem from="1571421271846" duration="72000" />
+      <workItem from="1571451756256" duration="922000" />
+      <workItem from="1571453105145" duration="421000" />
+      <workItem from="1571673825306" duration="520000" />
+      <workItem from="1571886119257" duration="344000" />
+      <workItem from="1571887423421" duration="68000" />
+      <workItem from="1571887627512" duration="181000" />
+      <workItem from="1571940658428" duration="97000" />
+      <workItem from="1571961309161" duration="618000" />
+      <workItem from="1571963068759" duration="224000" />
+      <workItem from="1571963460653" duration="228000" />
+      <workItem from="1571967634223" duration="8000" />
+      <workItem from="1577564979222" duration="425000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
