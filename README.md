@@ -1,6 +1,6 @@
 # Introduction  
 
-Personal solutions for some courses of Northwestern University. All the source codes and solutions were put into the markdown file.  
+Personal solutions for some courses of Northwestern University. All the source codes and solutions were put into the repository.  
 
 # 2019 Fall
 
