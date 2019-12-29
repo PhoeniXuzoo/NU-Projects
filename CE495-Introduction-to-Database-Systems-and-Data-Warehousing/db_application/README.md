@@ -18,7 +18,7 @@ spring.datasource.password= ***
 
 ## Features
 
- - RESTfule API
+ - RESTful API
  - Stored Procedures
  - Triggers
  - Ajax
@@ -90,7 +90,7 @@ In case of grades, "P", "CR", "D" means the student passed and completed the cou
  - Spring Boot
  - Spring Boot JDBC
  - Mysql 5.7
- - Bootstrap
+ - Bootstrap 3
  - Ajax
  - HTML, Javascript
 
