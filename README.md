@@ -12,9 +12,12 @@ Personal solutions for some courses of Northwestern University. All the source c
 
 # 2020 Winter
 
- - CS336 Design and Analysis of Algorithm(/)
+ - [CS336 Design and Analysis of Algorithm](/CS336)
  - CS340 Introduction to Networking
 
 # 2020 Spring
+
+ - [CS396 Scalable Software Architecture](/CS396)
+ - [EE475 Machine Learning](/EE475)
 
 # 2020 Fall
