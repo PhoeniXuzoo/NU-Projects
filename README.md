@@ -12,7 +12,7 @@ Personal solutions for some courses of Northwestern University. All the source c
 
 # 2020 Winter
 
- - CS336 Design and Analysis of Algorithm
+ - CS336 Design and Analysis of Algorithm(/)
  - CS340 Introduction to Networking
 
 # 2020 Spring
