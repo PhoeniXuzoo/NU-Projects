@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- for reference, see:
+  -- https://dev.to/luispa/lets-try-react-without-nodejs-3a7
+  -- https://reactjs.org/docs/hello-world.html
+  -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zoogle</title>
+    <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+    <script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+    <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <!-- your custom CSS goes here: -->
+    <style>
+        em{font-weight: bolder}
+
+        #root {
+            margin-top: 20px;
+        }
+
+        #langSelectMenu {
+            width: 150px !important;
+        }
+
+        #dateInput {
+            width: 150px !important;
+        }
+
+        #prevPage {
+            width: 150px !important;
+        }
+
+        #nextPage {
+            width: 150px !important;
+        }
+
+        .highlight {
+            background-color: yellow
+        }
+
+    </style>
+
+    <!-- Maybe you want to use bootstrap to make it pretty? -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div id="root"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+    // Obtain the root
+    const rootElement = document.getElementById('root')
+    const languageJSON = {"All languages": null, "en": "English", "zh": "Chinese", "es": "Spanish", "fr": "French"};
+    const monthList = ["", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+    class SearchApp extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                querySlected: "",
+                langSelected: null,
+                dateSelected: "",
+                offsetSelected: "0",
+                rtResult: 0,
+                ttResult: 0,
+                articles: [],
+            };
+
+            this.handleQueryChange = this.handleQueryChange.bind(this);
+            this.handleSelectDate = this.handleSelectDate.bind(this);
+            this.handleNewRequest = this.handleNewRequest.bind(this);
+            this.handleProcessJson = this.handleProcessJson.bind(this);
+        }
+
+        handleSelectLang = (choice) => {
+            if (choice === this.state.langSelected) return;
+
+            this.setState({langSelected: choice});
+        }
+
+        handleQueryChange = () => {
+            this.setState({querySlected: document.getElementById("queryInput").value});
+            //console.log("query Input: " + document.getElementById("queryInput").value);
+
+            this.setState({offsetSelected: "0"}, this.handleNewRequest);
+
+
+        }
+
+        handleSelectDate = () => {
+            this.setState({dateSelected: document.getElementById("dateInput").value});
+            console.log("date Input: " + document.getElementById("dateInput").value);
+        }
+
+        handleSearchBtn = () => {
+            this.setState({offsetSelected: "0"}, this.handleNewRequest);
+        }
+
+        handlePrevBtn = () => {
+            var ofs = parseInt(this.state.offsetSelected);
+            if (ofs >= 10) ofs -= 10;
+            this.setState({offsetSelected: ofs.toString()}, this.handleNewRequest);
+        }
+
+        handleNextBtn = () => {
+            var ofs = parseInt(this.state.offsetSelected);
+            ofs += 10;
+            this.setState({offsetSelected: ofs.toString()}, this.handleNewRequest);
+        }
+
+        handleNewRequest = () => {
+            var lang = this.state.langSelected ? this.state.langSelected : "";
+            var offset = this.state.offsetSelected;
+            var date = document.getElementById("dateInput").value;
+            var query = document.getElementById("queryInput").value;
+            var queryParam
+            if (query !== "")
+                queryParam = "query=" + query + "&language=" + lang + "&date=" + date + "&offset=" + offset;
+            else queryParam = "query=&language=&date=&offset=";
+            console.log("query Input: " + queryParam);
+
+            fetch("http://hw2-env.eba-ahm3mdt6.us-east-1.elasticbeanstalk.com/api/search?" + queryParam)
+                .then(response => { console.log(response.status); return response.json();}) /* asynchronously parse the response as JSON */
+                .then(json => this.handleProcessJson(json)/* do something with the resulting "json" object */)
+                .catch(() => "Bad Get Request"/* do something if either the HTTP call or the JSON parsing fails */);
+        }
+
+        handleProcessJson = (json) => {
+            console.log(json);
+            var highLightArticle = json["articles"];
+            var re = new RegExp(document.getElementById("queryInput").value, "ig");
+            var tag = 'span';
+            for (var i = 0; i < highLightArticle.length; ++i) {
+                if (re.test(highLightArticle[i]["txt"])) {
+                    var len = parseInt(highLightArticle[i]["txt"].length * 0.5);
+                    len = (len > 500) ? 500 : len;
+                    highLightArticle[i]["snippet"] = highLightArticle[i]["txt"].substr(0, len).replace(re, '<'+ tag +' class="highlight">$&</'+ tag +'>');
+                    //highLightArticle[i]["txt"] = highLightArticle[i]["txt"].replace(re, '<'+ tag +' class="highlight">$&</'+ tag +'>')
+
+                }
+            }
+            this.setState({rtResult: json["returned_results"]});
+            this.setState({ttResult: json["total_results"]});
+            this.setState({articles: highLightArticle});
+        }
+
+        render() {
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-1"></div>
+                        <div className="col-10 text-center">
+                            <h1 className="display-1" id="ZoogleLogo">Zoogle</h1>
+                            <br />
+
+                            <div className="row">
+                                <div className="input-group col-6 offset-3">
+                                    <input id="queryInput" type="text" className="form-control" placeholder="Search here" autocomplete="off" onChange={this.handleQueryChange}/>
+                                    <div className="input-group-append">
+                                        <button type="button" className="input-group-text btn btn-outline-primary" onClick={() => this.handleSearchBtn()}>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div className="row">
+                                <div className="col-1 offset-3">
+                                    <button id="prevPage" type="button" className="btn btn-primary" onClick={() => this.handlePrevBtn()}>Previous</button>
+                                </div>
+
+                                <div className="offset-1">
+                                    <button id="nextPage" type="button" className="btn btn-primary" onClick={() => this.handleNextBtn()}>Next Page</button>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div className="row">
+                                <div className="dropdown col-1 offset-3">
+                                    <button type="button" className="btn btn-primary dropdown-toggle"
+                                            data-toggle="dropdown" id="langSelectMenu">
+                                        {this.state.langSelected ? languageJSON[this.state.langSelected] : "All languages"}
+                                    </button>
+                                    <div className="dropdown-menu">
+                                        <a className="dropdown-item" onClick={() => this.handleSelectLang(null)}>All languages</a>
+                                        <a className="dropdown-item" onClick={() => this.handleSelectLang("en")}>English</a>
+                                    </div>
+                                </div>
+
+                                <div className="offset-1">
+                                    <input id="dateInput" type="text" className="form-control" placeholder="YYYY-MM-DD" autocomplete="off" onChange={this.handleSelectDate}/>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div className="alert alert-primary col-6 offset-3" role="alert">
+                                Current Page: {this.state.offsetSelected / 10}
+                            </div>
+
+                            <div className="alert alert-primary col-6 offset-3" role="alert">
+                                Total results: {this.state.ttResult}
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+
+                            {this.state.articles.map((article) => {
+                                return (<div><div className="col 10 text-left">
+                                    <h4>Title: {article["title"]}</h4>
+                                    <a href={article["url"]}>{article["url"]}</a>
+                                    <div dangerouslySetInnerHTML={{ __html: article["snippet"] }}></div>
+                                </div><br /></div>)
+                            })}
+                        </div>
+                        <div className="col-1"></div>
+                    </div>
+
+                </div>
+            );
+        }
+    }
+
+    // Use the ReactDOM.render to show your component on the browser
+    ReactDOM.render(
+        <SearchApp />,
+        rootElement
+    )
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="search-api:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>search-api</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="search-api-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="search-api:war exploded" />
+    </root>
+  </artifact>
+</component>
